@@ -1,12 +1,20 @@
-const { mongoose } = require(".");
-
+/**
+ * Policy Model JS
+ */
+const { mongoose } = require("../config/mongoConfig");
 
 module.exports = mongoose => {
     var schema = mongoose.Schema(
         {
-            title: String,
-            description: String,
-            published: Boolean
+            name: String,
+            type: String,
+            holder_first_name: String,
+            holder_last_name: String,
+            holder_account_id: String,
+            is_active: Boolean,
+            has_active_claim: Boolean,
+            effective_date: Date,
+            termination_date: Date
         },
         { timestamps: true }
     );
@@ -17,6 +25,6 @@ module.exports = mongoose => {
         return object;
     });
 
-    const policyManagement = mongoose.model("policyManagement", schema);
-    return policyManagement;
+    const policyCollection = mongoose.model("policy_collection", schema);
+    return policyCollection;
 };

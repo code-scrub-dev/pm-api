@@ -7,19 +7,19 @@ module.exports = app => {
     router.get("/", pmRoute.getAll);
 
     // GET Policy by Id
-    //router.get("/:id", pmRoute.getById);
+    router.get("/:id", pmRoute.getById);
 
     // POST Add a new Policy
     router.post("/", pmRoute.add);
 
     // PUT update policy by id
-    //router.put("/:id", pmRoute.updateById);
+    router.put("/:id", pmRoute.updateById);
 
     // DELETE Policy by id
-    //router.delete("/:id", pmRoute.deleteById);
+    router.delete("/:id", pmRoute.deleteById);
 
     // DELETE all Policies
-    //router.delete("/", pmRoute.deleteAll);
+    router.delete("/", pmRoute.deleteAll);
 
     app.use('/policies', router);
 };

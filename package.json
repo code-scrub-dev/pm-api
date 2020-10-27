@@ -14,7 +14,7 @@
     "cors": "^2.8.5",
     "express": "4.17.1",
     "mongoose": "^5.10.7",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.6"
   },
   "nodemonConfig": {
     "restartable": "restart",
@@ -24,7 +24,7 @@
     "delay": "6000",
     "env": {
       "NODE_ENV": "dev",
-      "PORT": 9000
+      "PORT": 8080
     }
   }
 }

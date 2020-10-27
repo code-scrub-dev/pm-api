@@ -1,0 +1,107 @@
+////////////////////////
+// SECTION: HOME PAGE //
+////////////////////////
+
+### GET The HomePage
+GET http://localhost:8080/ HTTP/1.1
+Content-Type: application/json
+
+////////////////////////
+// SECTION: POLICY    //
+////////////////////////
+
+### ADD New Policy
+POST http://localhost:8080/policies/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Surya Tripathi",
+    "type": "Property",
+    "holder_first_name": "Surya",
+    "holder_last_name": "Tripathi",
+    "holder_account_id": "H41287SW543",
+    "is_active": true,
+    "has_active_claim": false,
+    "effective_date": "2020-01-01",
+    "termination_date": "2020-12-31"
+}
+
+### GET All Policies
+GET http://localhost:8080/policies/ HTTP/1.1
+Content-Type: application/json
+
+### GET Policy Information By ID
+GET http://localhost:8080/policies/5f9890c697fe8f114817e075 HTTP/1.1
+Content-Type: application/json
+
+### PUT Update Policy Data by ID
+PUT http://localhost:8080/policies/5f9890c697fe8f114817e075 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Sefali Acharya",
+    "type": "Property",
+    "holder_first_name": "Sefali",
+    "holder_last_name": "Acharya",
+    "holder_account_id": "H31287SW543",
+    "is_active": true,
+    "has_active_claim": true,
+    "effective_date": "2020-01-01",
+    "termination_date": "2020-12-31"
+}
+
+### DELETE Policy Data By ID 
+DELETE http://localhost:8080/policies/5f9890c697fe8f114817e075 HTTP/1.1
+Content-Type: application/json
+
+### DELETE All Policy Data
+DELETE http://localhost:8080/policies HTTP/1.1
+Content-Type: application/json
+
+//////////////////////
+// SECTION: CLAIMS  //
+//////////////////////
+
+### ADD New Claim
+POST http://localhost:8080/claims/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "opened_date": "2021-10-05",
+    "incident_date": "2021-10-03",
+    "adjustor_notes": "Adding some notes to validate",
+    "compensation_amount": "1234",
+    "decision": "Not At-Fault",
+    "decision_date": "2021-10-20",
+    "is_closed": true
+}
+
+### GET All Claims Information
+GET http://localhost:8080/claims/ HTTP/1.1
+Content-Type: application/json
+
+### GET Claims Data By ID
+GET http://localhost:8080/claims/5f98911997fe8f114817e076 HTTP/1.1
+Content-Type: application/json
+
+### PUT Update Claims Data by ID
+PUT http://localhost:8080/claims/5f98911997fe8f114817e076 HTTP/1.1
+Content-Type: application/json
+
+{
+    "opened_date": "2021-10-05",
+    "incident_date": "2021-10-03",
+    "adjustor_notes": "Adding some notes to validate",
+    "compensation_amount": "1234",
+    "decision": "Not At-Fault",
+    "decision_date": "2021-10-20",
+    "is_closed": false
+}
+
+### DELETE Claims Data By ID 
+DELETE http://localhost:8080/claims/5f98911997fe8f114817e076 HTTP/1.1
+Content-Type: application/json
+
+### DELETE All Claims Data
+DELETE http://localhost:8080/claims HTTP/1.1
+Content-Type: application/json
