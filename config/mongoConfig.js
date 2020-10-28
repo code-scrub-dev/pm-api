@@ -1,3 +1,8 @@
+/**
+ * File Name: mongoConfig.js
+ * 
+ * Purpose: This mongoConfig is used for MongoDB configurations
+ */
 const mongoose = require("mongoose");
 
 mongoose.Promise = global.Promise;

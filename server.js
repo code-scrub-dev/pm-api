@@ -1,6 +1,11 @@
-/**
- * Project: Create a Policy Management NodeJS Application.
- */
+ /**
+  * Project: Create a Policy Management NodeJS Application.
+  * 
+  * File Name: claimsRoutes.js
+  * 
+  * Purpose: This claimsRoutes defines the routes for a claims API request.
+  */
+ 
 const express = require('express');
 const bodyParser = require("body-parser");
 const cors = require("cors");

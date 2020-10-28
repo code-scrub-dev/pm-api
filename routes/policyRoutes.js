@@ -1,3 +1,9 @@
+/**
+ * File Name: policyRoutes.js
+ * 
+ * Purpose: This policyRoutes defines the routes for a policy API request.
+ */
+
 module.exports = app => {
     const pmRoute = require("../controllers/policyController.js");
 

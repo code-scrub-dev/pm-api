@@ -1,3 +1,10 @@
+/**
+ * File Name: homePageRoutes.js
+ * 
+ * Purpose: This homePageRoutes defines the routes for a 
+ * top-level homepage API request.
+ */
+
 module.exports = app => {
     var router = require("express").Router();
 

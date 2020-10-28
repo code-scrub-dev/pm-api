@@ -1,6 +1,10 @@
 /**
- * Policy Controller
+ * File Name: policyController.js
+ * 
+ * Purpose: The policyController manages the API functionalities 
+ * related to POLICY transactions.
  */
+
 const { policy } = require("../config/mongoConfig");
 const db = require("../config/mongoConfig"); 
 const PolicyInstance = db.policy; 

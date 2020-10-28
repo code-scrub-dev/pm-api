@@ -1,3 +1,9 @@
+/**
+ * File Name: claimsRoutes.js
+ * 
+ * Purpose: This claimsRoutes defines the routes for a claims API request.
+ */
+
 module.exports = app => {
     const cmRoute = require("../controllers/claimsController.js");
 

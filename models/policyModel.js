@@ -1,6 +1,10 @@
 /**
- * Policy Model JS
+ * File Name: policyModel.js
+ * 
+ * Purpose: This policyModel defines the schema and 
+ * the properties of a policy request.
  */
+
 const { mongoose } = require("../config/mongoConfig");
 
 module.exports = mongoose => {

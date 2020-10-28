@@ -1,5 +1,8 @@
 /**
- * Claims Controller
+ * File Name: claimsController.js
+ * 
+ * Purpose: The claimsController manages the API functionalities 
+ * related to CLAIMS transactions.
  */
 const { claims } = require("../config/mongoConfig");
 const db = require("../config/mongoConfig");

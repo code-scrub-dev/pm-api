@@ -1,3 +1,10 @@
+/**
+ * File Name: claimsModel.js
+ * 
+ * Purpose: This claimsModel defines the schema and 
+ * the properties of a claims request.
+ */
+
 const { mongoose } = require("../config/mongoConfig");
 
 module.exports = mongoose => {
