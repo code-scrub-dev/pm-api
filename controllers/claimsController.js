@@ -34,7 +34,7 @@ exports.getAll = (req, res) => {
         .find()
         .then(data => {
             if(data == '') { 
-                res.status(404).send({ message: "No Claims Data Found." });
+                res.status(404).send({Message: "No Claims Data Found."});
             }
             else { 
                 res.status(200).send(data); 
@@ -56,8 +56,8 @@ exports.getById = (req, res) => {
         ClaimsInstance
         .findById(id)
         .then(data => {            
-            if(data == '') { 
-                res.status(404).send({ message: `No Claims Data Found for ${id}` }); 
+            if(!data) { 
+                res.status(404).send({Message: `No Claims Data Found with id: ${id}.`}); 
             }
             else { 
                 res.status(200).send(data); 
@@ -80,8 +80,8 @@ exports.updateById = (req, res) => {
         ClaimsInstance
             .findByIdAndUpdate(id, req.body, {useFindAndModify: false})
             .then(data => {
-                if(data == '') {
-                    res.status(404).send({Message: `Unable to update with ${id}`});
+                if(!data) {
+                    res.status(404).send({Message: `Unable to update claims data with id: ${id}.`});
                 } else {
                     res.status(200).send(data);
                 }
@@ -117,8 +117,8 @@ exports.deleteById = (req, res) => {
         ClaimsInstance
             .findByIdAndRemove(id)
             .then(data => {
-                if(data == '') {
-                    res.status(404).send({Message: `Unable to DELETE with ${id}`});
+                if(!data) {
+                    res.status(404).send({Message: `Unable to DELETE claims data with id: ${id}.`});
                 } else {
                     res.status(200).send(data);
                 }

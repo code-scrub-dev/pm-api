@@ -35,7 +35,7 @@ exports.getAll = (req, res) => {
         .find()
         .then(data => {
             if(data == '') { 
-                res.status(404).send({ message: "No Policy Data Found." });
+                res.status(404).send({Message: "No Policy Data Found."});
             }
             else { 
                 res.status(200).send(data); 
@@ -57,8 +57,8 @@ exports.getById = (req, res) => {
         PolicyInstance
         .findById(id)
         .then(data => {            
-            if(data == '') { 
-                res.status(404).send({ message: `No Policy Data Found for ${id}` }); 
+            if(!data) { 
+                res.status(404).send({Message: `No Policy Data Found with id: ${id}.`}); 
             }
             else { 
                 res.status(200).send(data); 
@@ -79,10 +79,10 @@ exports.updateById = (req, res) => {
     console.log(`>>> UPDATE the policy information for ${id}...`);
     if (id != null && id != '') {
         PolicyInstance
-            .findByIdAndUpdate(id, req.body, {useFindAndModify: false})
+            .findByIdAndUpdate(id, req.body, {useFindAndModify: true})
             .then(data => {
-                if(data == '') {
-                    res.status(404).send({Message: `Unable to update with ${id}`});
+                if(!data) {
+                    res.status(404).send({Message: `Unable to update policy data with id: ${id}.`});
                 } else {
                     res.status(200).send(data);
                 }
@@ -118,8 +118,8 @@ exports.deleteById = (req, res) => {
         PolicyInstance
             .findByIdAndRemove(id)
             .then(data => {
-                if(data == '') {
-                    res.status(404).send({Message: `Unable to DELETE with ${id}`});
+                if(!data) {
+                    res.status(404).send({Message: `Unable to DELETE policy with id: ${id}.`});
                 } else {
                     res.status(200).send(data);
                 }
