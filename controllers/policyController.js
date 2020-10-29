@@ -7,7 +7,7 @@
 
 const { policy } = require("../config/mongoConfig");
 const db = require("../config/mongoConfig"); 
-const PolicyInstance = db.policy; 
+const PolicyDbHandler = db.policy; 
 
 /**
  * Add a new policy information
@@ -16,12 +16,17 @@ const PolicyInstance = db.policy;
  */
 exports.add = (req, res) => {
     console.log(">>> POST new POLICY information...");
-    const policyInstance = new PolicyInstance(req.body);
-    policyInstance
-        .save(policyInstance)
-        .then(data => { res.status(200).send(data); })
-        .catch(error => { res.status(400).send({ErrorMessage: error.message});  
-    });
+    if(req.body.name && req.body.name != '') {
+        const policyInstance = new PolicyDbHandler(req.body);
+        policyInstance
+            .save(policyInstance)
+            .then(data => { res.status(200).send(data); })
+            .catch(error => { res.status(400).send({ErrorMessage: error.message});  
+        });
+    } else {
+        res.status(400).send({Message: "Missing required field."});
+    }
+
 };
 
 /**
@@ -31,7 +36,7 @@ exports.add = (req, res) => {
  */
 exports.getAll = (req, res) => {
     console.log(">>> GET all POLICY information...");
-    PolicyInstance
+    PolicyDbHandler
         .find()
         .then(data => {
             if(data == '') { 
@@ -54,8 +59,8 @@ exports.getById = (req, res) => {
     const id = req.params.id;
     console.log(`>>> GET the policy information for ${id}...`);
     if (id != null && id != '') {
-        PolicyInstance
-        .findById(id)
+        PolicyDbHandler
+        .findOne({_id: id})
         .then(data => {            
             if(!data) { 
                 res.status(404).send({Message: `No Policy Data Found with id: ${id}.`}); 
@@ -78,8 +83,11 @@ exports.updateById = (req, res) => {
     const id = req.params.id;
     console.log(`>>> UPDATE the policy information for ${id}...`);
     if (id != null && id != '') {
-        PolicyInstance
-            .findByIdAndUpdate(id, req.body, {useFindAndModify: true})
+        if (!req.body) {
+            res.status(404).send({Message: "Missing required input data."});
+        } else {
+            PolicyDbHandler
+            .findOneAndUpdate(id, req.body, {new: true})
             .then(data => {
                 if(!data) {
                     res.status(404).send({Message: `Unable to update policy data with id: ${id}.`});
@@ -88,7 +96,8 @@ exports.updateById = (req, res) => {
                 }
             })
             .catch(error => { res.status(400).send({ErrorMessage: error.message}); 
-        });
+            });
+        }
     }
 };
 
@@ -99,9 +108,9 @@ exports.updateById = (req, res) => {
  */
 exports.deleteAll = (req, res) => {
     console.log(`>>> DELETE all policy information...`);
-    PolicyInstance
+    PolicyDbHandler
         .deleteMany({})
-        .then(data => { res.status(200).send({Message: "Deleted All Policy Data."}); })
+        .then(data => { res.status(200).send({Message: `Deleted ${data.deletedCount} Policy Data.`}); })
         .catch(error => { res.status(400).send({ErrorMessage: error.message}); 
     });
 };
@@ -115,8 +124,8 @@ exports.deleteById = (req, res) => {
     const id = req.params.id;
     console.log(`>>> DELETE the policy information for ${id}...`);
     if (id != null && id != '') {
-        PolicyInstance
-            .findByIdAndRemove(id)
+        PolicyDbHandler
+            .findOneAndDelete({_id: id})
             .then(data => {
                 if(!data) {
                     res.status(404).send({Message: `Unable to DELETE policy with id: ${id}.`});

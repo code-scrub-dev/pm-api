@@ -5,27 +5,27 @@
  */
 
 module.exports = app => {
-    const cmRoute = require("../controllers/claimsController.js");
+    const claimsController = require("../controllers/claimsController.js");
 
-    var router = require("express").Router();
+    const router = require("express").Router();
 
     // GET All Claims
-    router.get("/", cmRoute.getAll);
+    router.get("/", claimsController.getAll);
 
     // GET Claim by Id
-    router.get("/:id", cmRoute.getById);
+    router.get("/:id", claimsController.getById);
 
     // POST Add a new Claim
-    router.post("/", cmRoute.add);
+    router.post("/", claimsController.add);
 
     // PUT update Claim by id
-    router.put("/:id", cmRoute.updateById);
+    router.put("/:id", claimsController.updateById);
 
     // DELETE Claim by id
-    router.delete("/:id", cmRoute.deleteById);
+    router.delete("/:id", claimsController.deleteById);
 
     // DELETE all Claims
-    router.delete("/", cmRoute.deleteAll);
+    router.delete("/", claimsController.deleteAll);
 
     app.use('/claims', router);
 };

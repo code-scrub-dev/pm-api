@@ -20,7 +20,7 @@ POST http://localhost:8080/policies/ HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "Surya Tripathi",
+    "name": "Suryakanta Tripathi",
     "type": "Property",
     "holder_first_name": "Surya",
     "holder_last_name": "Tripathi",
@@ -36,27 +36,20 @@ GET http://localhost:8080/policies/ HTTP/1.1
 Content-Type: application/json
 
 ### GET Policy Information By ID
-GET http://localhost:8080/policies/5f9890c697fe8f114817e075 HTTP/1.1
+GET http://localhost:8080/policies/5f998c493280d742440ba0e9 HTTP/1.1
 Content-Type: application/json
 
 ### PUT Update Policy Data by ID
-PUT http://localhost:8080/policies/5f9890c697fe8f114817e075 HTTP/1.1
+PUT http://localhost:8080/policies/5f998c493280d742440ba0e9 HTTP/1.1
 Content-Type: application/json
 
 {
     "name": "Sefali Acharya",
-    "type": "Property",
-    "holder_first_name": "Sefali",
-    "holder_last_name": "Acharya",
-    "holder_account_id": "H31287SW543",
-    "is_active": true,
-    "has_active_claim": true,
-    "effective_date": "2020-01-01",
-    "termination_date": "2020-12-31"
+    "has_active_claim": false
 }
 
 ### DELETE Policy Data By ID 
-DELETE http://localhost:8080/policies/5f9890c697fe8f114817e075 HTTP/1.1
+DELETE http://localhost:8080/policies/5f998c493280d742440ba0e9 HTTP/1.1
 Content-Type: application/json
 
 ### DELETE All Policy Data

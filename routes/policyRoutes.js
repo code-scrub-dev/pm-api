@@ -5,27 +5,27 @@
  */
 
 module.exports = app => {
-    const pmRoute = require("../controllers/policyController.js");
+    const policyController = require("../controllers/policyController.js");
 
-    var router = require("express").Router();
+    const router = require("express").Router();
 
     // GET All Policies
-    router.get("/", pmRoute.getAll);
+    router.get("/", policyController.getAll);
 
     // GET Policy by Id
-    router.get("/:id", pmRoute.getById);
+    router.get("/:id", policyController.getById);
 
     // POST Add a new Policy
-    router.post("/", pmRoute.add);
+    router.post("/", policyController.add);
 
     // PUT update policy by id
-    router.put("/:id", pmRoute.updateById);
+    router.put("/:id", policyController.updateById);
 
     // DELETE Policy by id
-    router.delete("/:id", pmRoute.deleteById);
+    router.delete("/:id", policyController.deleteById);
 
     // DELETE all Policies
-    router.delete("/", pmRoute.deleteAll);
+    router.delete("/", policyController.deleteAll);
 
     app.use('/policies', router);
 };
